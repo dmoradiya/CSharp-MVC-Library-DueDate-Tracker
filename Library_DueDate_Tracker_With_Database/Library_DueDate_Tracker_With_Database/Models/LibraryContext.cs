@@ -136,7 +136,7 @@ namespace Library_DueDate_Tracker_With_Database.Models
                     {
                         ID = 7,
                         AuthorID = 3,
-                        Title = "Good Economics for Hard Times",
+                        Title = "Good Economics for Hard Times part 3",
                         PublicationDate = new DateTime(2017, 03, 03)
                     }
                 );
@@ -155,7 +155,63 @@ namespace Library_DueDate_Tracker_With_Database.Models
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName(keyName);
 
-
+                entity.HasData(
+                    new Borrow()
+                    {
+                        ID = 1,
+                        BookID = 1,
+                        ChechedOutDate = new DateTime(2015, 12, 25),
+                        DueDate = new DateTime(2016, 01, 08),
+                        ReturnedDate = new DateTime(2016, 01, 01)
+                    },
+                    new Borrow()
+                    {
+                        ID = 2,
+                        BookID = 2,
+                        ChechedOutDate = new DateTime(2015, 12, 25),
+                        DueDate = new DateTime(2016, 01, 08),
+                        ReturnedDate = new DateTime(2016, 01, 01)
+                    },
+                    new Borrow()
+                    {
+                        ID = 3,
+                        BookID = 3,
+                        ChechedOutDate = new DateTime(2015, 12, 25),
+                        DueDate = new DateTime(2016, 01, 08),
+                        ReturnedDate = new DateTime(2016, 01, 01)
+                    },
+                    new Borrow()
+                    {
+                        ID = 4,
+                        BookID = 4,
+                        ChechedOutDate = new DateTime(2015, 12, 25),
+                        DueDate = new DateTime(2016, 01, 08),
+                        ReturnedDate = new DateTime(2016, 01, 01)
+                    },
+                    new Borrow()
+                    {
+                        ID = 5,
+                        BookID = 5,
+                        ChechedOutDate = new DateTime(2015, 12, 25),
+                        DueDate = new DateTime(2016, 01, 08),
+                        ReturnedDate = new DateTime(2016, 01, 01)
+                    },
+                    new Borrow()
+                    {
+                        ID = 6,
+                        BookID = 6,
+                        ChechedOutDate = new DateTime(2015, 12, 25),
+                        DueDate = new DateTime(2016, 01, 08),
+                        ReturnedDate = new DateTime(2016, 01, 10)
+                    },
+                    new Borrow()
+                    {
+                        ID = 7,
+                        BookID = 7,
+                        ChechedOutDate = new DateTime(2015, 12, 25),
+                        DueDate = new DateTime(2016, 01, 08),
+                        ReturnedDate = new DateTime()
+                    });
             });
         }
 
