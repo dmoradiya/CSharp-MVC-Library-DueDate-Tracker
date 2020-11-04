@@ -16,7 +16,6 @@ namespace Library_DueDate_Tracker_With_Database.Models
         }
 
         [Key]
-        [Required]
         [Column(TypeName = "int(10)")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
@@ -25,7 +24,6 @@ namespace Library_DueDate_Tracker_With_Database.Models
         [Column(TypeName = "varchar(60)")]
         public string Name { get; set; }
 
-        [Required]
         [Column(TypeName = "date")]
         public DateTime DateOfBirth { get; set; }
 

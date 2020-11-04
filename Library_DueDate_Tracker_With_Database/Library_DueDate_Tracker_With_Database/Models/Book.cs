@@ -16,12 +16,10 @@ namespace Library_DueDate_Tracker_With_Database.Models
         }
 
         [Key]
-        [Required]
         [Column(TypeName = "int(10)")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
-        [Required]
         [Column(TypeName = "int(10)")]
         public int AuthorID { get; set; }
 
@@ -29,7 +27,6 @@ namespace Library_DueDate_Tracker_With_Database.Models
         [Column(TypeName = "varchar(100)")]
         public string Title { get; set; }
 
-        [Required]
         [Column(TypeName = "date")]
         public DateTime PublicationDate { get; set; }
 

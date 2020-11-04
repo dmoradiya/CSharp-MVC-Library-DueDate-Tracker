@@ -11,20 +11,16 @@ namespace Library_DueDate_Tracker_With_Database.Models
     public class Borrow
     {
         [Key]
-        [Required]
         [Column(TypeName = "int(10)")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
-        [Required]
         [Column(TypeName = "int(10)")]
         public int BookID { get; set; }
 
-        [Required]
         [Column(TypeName = "date")]
         public DateTime ChechedOutDate { get; set; }
 
-        [Required]
         [Column(TypeName = "date")]
         public DateTime DueDate { get; set; }
 

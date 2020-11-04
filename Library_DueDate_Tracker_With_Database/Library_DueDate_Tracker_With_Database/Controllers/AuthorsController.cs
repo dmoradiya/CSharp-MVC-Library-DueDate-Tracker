@@ -148,5 +148,15 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
         {
             return _context.Authors.Any(e => e.ID == id);
         }
+
+        public static List<Author> GetAuthors()
+        {
+            List<Author> results;
+            using (LibraryContext context = new LibraryContext())
+            {
+                results = context.Authors.ToList();
+            }
+            return results;
+        }
     }
 }
