@@ -86,7 +86,7 @@ namespace Library_DueDate_Tracker_With_Database.Models
                 entity.HasOne(thisEntity => thisEntity.Author)
                 .WithMany(parent => parent.Books)
                 .HasForeignKey(thisEntity => thisEntity.AuthorID)
-                .OnDelete(DeleteBehavior.Cascade)
+                .OnDelete(DeleteBehavior.Restrict)
                 .HasConstraintName(keyName);
                 
                 entity.HasData(
