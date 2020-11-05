@@ -17,10 +17,20 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
 {
     public class BorrowController : Controller
     {
+        // Actions
         public IActionResult Index()
         {
             return View();
         }
-        
+
+        // Methods
+        public void ExtendDueDateForBorrowByID()
+        {
+            using (LibraryContext context = new LibraryContext())
+            {
+                
+            }
+            
+        }
     }
 }

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Library_DueDate_Tracker_With_Database.Models;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace Library_DueDate_Tracker_With_Database.Controllers
 {
@@ -155,6 +156,7 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
             using (LibraryContext context = new LibraryContext())
             {
                 results = context.Authors.ToList();
+                
             }
             return results;
         }
