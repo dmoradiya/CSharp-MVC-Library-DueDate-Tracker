@@ -32,6 +32,11 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
 
             return View();
         }
+        public IActionResult Delete(string id)
+        {
+            DeleteBookByID(id);
+            return RedirectToAction("List");
+        }
         public IActionResult BorrowBook(string bookId)
         {
             ViewBag.BorrowBook = BorrowController.GetBorrowBooks().Where(x=>x.BookID == int.Parse(bookId)).SingleOrDefault();
@@ -51,7 +56,7 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
         }
         public Book GetBookByID(string id)
         {
-            return GetBooks().Where(x => x.ID == int.Parse(id)).Single();
+            return GetBooks().Where(x => x.ID == int.Parse(id)).SingleOrDefault();
         }
 
         //public void ExtendDueDateByID(string id)
@@ -64,10 +69,17 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
         //    GetBookByID(id).ReturnedDate = DateTime.Today;
         //}
 
-        //public void DeleteBookByID(string id)
-        //{
-        //    Books.Remove(GetBookByID(id));
-        //}
+        public void DeleteBookByID(string id)
+        {
+            
+            using (LibraryContext context = new LibraryContext())
+            {
+
+                context.Books.Remove(GetBookByID(id));
+                context.SaveChanges();
+            }
+            
+        }
 
     }
 }

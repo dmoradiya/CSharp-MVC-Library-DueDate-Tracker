@@ -26,25 +26,6 @@ else
     <p>An error occured trying to populate book data. <a href="/Book/List">Click here to return to the book list</a>.</p>
 }
 
-@if (ViewBag.Books.Count > 0)
-{
-    <table>
-        <tr>
-            <th>Checked Out</th>
-            <th>Due Date</th>
-            <th>Returned</th>
-        </tr>
-        @foreach (Book book in ViewBag.Books)
-        {
-            <tr>
-                <td>@(book.Borrows.LastOrDefault().ChechedOutDate.ToShortDateString())</td>
-                <td>@(book.Borrows.LastOrDefault().DueDate.ToShortDateString())</td>
-                <td>@((book.Borrows.LastOrDefault().ReturnedDate == null ? "Not Returned" : ((DateTime)book.Borrows.LastOrDefault().ReturnedDate).ToShortDateString()))</td>
-            </tr>
-        }
-
-    </table>
-}
 
 
 
