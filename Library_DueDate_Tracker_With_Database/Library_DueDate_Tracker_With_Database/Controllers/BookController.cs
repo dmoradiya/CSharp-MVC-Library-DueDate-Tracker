@@ -18,7 +18,7 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
         
         public IActionResult List()
         {
-            ViewBag.Book = GetBooks();
+            ViewBag.Books = GetBooks();
             return View();
         }
         public IActionResult Create()
@@ -36,7 +36,7 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
         {
             ViewBag.BorrowBook = BorrowController.GetBorrowBooks().Where(x=>x.BookID == int.Parse(bookId)).SingleOrDefault();
 
-            return RedirectToAction("Details", new Dictionary<string, string>() { { "id", bookId } });
+            return View();
         }
         // Methods
         public static List<Book> GetBooks()

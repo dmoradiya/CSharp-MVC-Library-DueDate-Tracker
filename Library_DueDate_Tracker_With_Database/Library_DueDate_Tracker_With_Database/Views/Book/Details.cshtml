@@ -17,7 +17,7 @@
     <a class="btn btn-primary" href="/Book/Extend?id=@(ViewBag.Details.ID)">Extend Due Date</a>
     <a class="btn btn-danger" href="/Book/Delete?id=@(ViewBag.Details.ID)">Delete Book</a>
 
-    <a class="btn btn-success" href="/Book/BorrowBook?id=@(ViewBag.Details.Author.ID)">Borrow Book</a>
+    <a class="btn btn-success" href="/Book/BorrowBook?id=@(ViewBag.Details.ID)">Borrow Book</a>
 
 }
 else
@@ -26,14 +26,27 @@ else
     <p>An error occured trying to populate book data. <a href="/Book/List">Click here to return to the book list</a>.</p>
 }
 
-
-
-@if (ViewBag.BorrowBook != null)
+@if (ViewBag.Books.Count > 0)
 {
+    <table>
+        <tr>
+            <th>Checked Out</th>
+            <th>Due Date</th>
+            <th>Returned</th>
+        </tr>
+        @foreach (Book book in ViewBag.Books)
+        {
+            <tr>
+                <td>@(book.Borrows.LastOrDefault().ChechedOutDate.ToShortDateString())</td>
+                <td>@(book.Borrows.LastOrDefault().DueDate.ToShortDateString())</td>
+                <td>@((book.Borrows.LastOrDefault().ReturnedDate == null ? "Not Returned" : ((DateTime)book.Borrows.LastOrDefault().ReturnedDate).ToShortDateString()))</td>
+            </tr>
+        }
 
-    <p>Checkout Date: @(ViewBag.BorrowBook.CheckOutDate.ToLongDateString())</p>
-    <p>Due Date: @(ViewBag.BorrowBook.DueDate.ToLongDateString())</p>
-    <p>Return Date: @(ViewBag.BorrowBook.ReturnedDate.ToLongDateString())</p>
-
+    </table>
 }
+
+
+
+
 
