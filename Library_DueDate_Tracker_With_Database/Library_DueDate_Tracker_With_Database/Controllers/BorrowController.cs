@@ -5,46 +5,59 @@ using System.Threading.Tasks;
 using Library_DueDate_Tracker_With_Database.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-/*
-Add a “ExtendDueDateForBorrowByID()” method that will extend the “DueDate” by 7 days from today.
-Add a “ReturnBorrowByID()” method that will set the “Borrow”s “ReturnedDate” to today.
-Add a “CreateBorrow()” method that will accept a “Book.ID” as a parameter and create a borrow for it.
-The “CheckOutDate” will be today.
-The “DueDate” will be 14 days from today.
-The “ReturnedDate” will be null.
 
-*/
 namespace Library_DueDate_Tracker_With_Database.Controllers
 {
     public class BorrowController : Controller
     {
-        // Actions
+        // ################# Actions #########################
         public IActionResult Index()
         {
             return View();
         }
 
-        // Methods
+        // #################### Methods ####################
 
 
-        public void ExtendDueDateForBorrowByID()
+        public static void ExtendDueDateForBorrowByID(string id)
         {
+            Borrow found;
             using (LibraryContext context = new LibraryContext())
             {
-                
+                found = context.Borrows.Where(x=>x.ID == int.Parse(id)).SingleOrDefault();
+                found.DueDate = DateTime.Today.AddDays(7);
+                context.SaveChanges();
             }
             
         }
-        
-        public static List<Borrow> GetBorrowBooks()
+
+        public static void ReturnBorrowByID(string id)
         {
-            List<Borrow> results;
+            Borrow found;
             using (LibraryContext context = new LibraryContext())
             {
-                results = context.Borrows.Include(x=>x.Book).ToList();
-
+                found = context.Borrows.Where(x => x.ID == int.Parse(id)).SingleOrDefault();
+                found.ReturnedDate = DateTime.Today;
+                context.SaveChanges();
             }
-            return results;
+
         }
+        public static void CreateBorrow(string id)
+        {
+            using (LibraryContext context = new LibraryContext())
+            {
+                context.Borrows.Add(new Borrow()
+                {
+                    BookID = int.Parse(id),
+                    ChechedOutDate = DateTime.Today,
+                    DueDate = DateTime.Today.AddDays(14),
+                    ReturnedDate = null,
+
+                });
+                context.SaveChanges();
+            }
+
+        }
+
     }
 }

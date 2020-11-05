@@ -32,16 +32,29 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
 
             return View();
         }
+
+        public IActionResult Extend(string id)
+        {
+            ExtendDueDateForBookByID(id);
+            return RedirectToAction("Details", new Dictionary<string, string>() { { "id", id } });
+        }
+
+        public IActionResult Return(string id)
+        {
+            ReturnBookByID(id);
+            return RedirectToAction("Details", new Dictionary<string, string>() { { "id", id } });
+        }
+
         public IActionResult Delete(string id)
         {
             DeleteBookByID(id);
             return RedirectToAction("List");
         }
-        public IActionResult BorrowBook(string bookId)
+        public IActionResult BorrowBook(string id)
         {
-            ViewBag.BorrowBook = BorrowController.GetBorrowBooks().Where(x=>x.BookID == int.Parse(bookId)).SingleOrDefault();
+            BorrowController.CreateBorrow(id);
 
-            return View();
+            return RedirectToAction("Details", new Dictionary<string, string>() { { "id", id } });
         }
         // Methods
         public static List<Book> GetBooks()
@@ -59,15 +72,15 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
             return GetBooks().Where(x => x.ID == int.Parse(id)).SingleOrDefault();
         }
 
-        //public void ExtendDueDateByID(string id)
-        //{
-        //    GetBookByID(id).DueDate = GetBookByID(id).DueDate.AddDays(7);
-        //}
+        public void ExtendDueDateForBookByID(string id)
+        {
+            BorrowController.ExtendDueDateForBorrowByID(id);
+        }
 
-        //public void ReturnBookByID(string id)
-        //{
-        //    GetBookByID(id).ReturnedDate = DateTime.Today;
-        //}
+        public void ReturnBookByID(string id)
+        {
+            BorrowController.ReturnBorrowByID(id);
+        }
 
         public void DeleteBookByID(string id)
         {

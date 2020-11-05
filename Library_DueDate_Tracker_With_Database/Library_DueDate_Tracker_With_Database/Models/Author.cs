@@ -29,7 +29,7 @@ namespace Library_DueDate_Tracker_With_Database.Models
 
         
         [Column(TypeName = "date")]
-        public DateTime DeathDate { get; set; }
+        public DateTime? DeathDate { get; set; }
 
         [InverseProperty(nameof(Models.Book.Author))]
         public virtual ICollection<Book> Books { get; set; }
