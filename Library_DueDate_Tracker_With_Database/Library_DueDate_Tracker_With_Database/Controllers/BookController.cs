@@ -17,18 +17,19 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
         
         public IActionResult List()
         {
-            ViewBag.Book = GetAuthors();
+            ViewBag.Book = GetBooks();
             return View();
         }
         public IActionResult Create()
         {
+            ViewBag.Author = AuthorsController.GetAuthors();
             return View();
         }
         public IActionResult Details()
         {
             return View();
         }
-        public static List<Book> GetAuthors()
+        public static List<Book> GetBooks()
         {
             List<Book> results;
             using (LibraryContext context = new LibraryContext())
@@ -38,5 +39,6 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
             }
             return results;
         }
+       
     }
 }
