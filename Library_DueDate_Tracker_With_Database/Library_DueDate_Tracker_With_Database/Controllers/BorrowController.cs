@@ -24,7 +24,7 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
             Borrow found;
             using (LibraryContext context = new LibraryContext())
             {
-                found = context.Borrows.Where(x=>x.ID == int.Parse(id)).SingleOrDefault();
+                found = context.Borrows.Where(x=>x.BookID == int.Parse(id)).SingleOrDefault();
                 found.DueDate = DateTime.Today.AddDays(7);
                 context.SaveChanges();
             }
@@ -36,7 +36,7 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
             Borrow found;
             using (LibraryContext context = new LibraryContext())
             {
-                found = context.Borrows.Where(x => x.ID == int.Parse(id)).SingleOrDefault();
+                found = context.Borrows.Where(x => x.BookID == int.Parse(id)).SingleOrDefault();
                 found.ReturnedDate = DateTime.Today;
                 context.SaveChanges();
             }
@@ -54,7 +54,7 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
                     ReturnedDate = null,
 
                 });
-               // context.SaveChanges();
+                context.SaveChanges();
             }
 
         }

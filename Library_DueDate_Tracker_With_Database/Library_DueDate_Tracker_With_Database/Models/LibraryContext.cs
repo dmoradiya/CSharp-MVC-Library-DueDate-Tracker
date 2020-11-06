@@ -39,33 +39,38 @@ namespace Library_DueDate_Tracker_With_Database.Models
                 entity.HasData(
                     new Author()
                     {
-                        ID = 1,
+                        ID = -1,
                         Name = "Edith Eva Eger",
-                        DateOfBirth = new DateTime(1960, 01, 01)
+                        DateOfBirth = new DateTime(1960, 01, 01),
+                        DeathDate = null
                     },
                     new Author()
                     {
-                        ID = 2,
+                        ID = -2,
                         Name = "David Mitchell",
-                        DateOfBirth = new DateTime(1960, 02, 02)
+                        DateOfBirth = new DateTime(1960, 02, 02),
+                        DeathDate = null
                     },
                     new Author()
                     {
-                        ID = 3,
+                        ID = -3,
                         Name = "Abhijit V. Banerjee",
-                        DateOfBirth = new DateTime(1960, 03, 03)
+                        DateOfBirth = new DateTime(1960, 03, 03),
+                        DeathDate = null
                     },
                     new Author()
                     {
-                        ID = 4,
+                        ID = -4,
                         Name = "John M. Barry",
-                        DateOfBirth = new DateTime(1960, 04, 04)
+                        DateOfBirth = new DateTime(1960, 04, 04),
+                        DeathDate = null
                     },
                     new Author()
                     {
-                        ID = 5,
+                        ID = -5,
                         Name = "Robert Iger",
-                        DateOfBirth = new DateTime(1960, 05, 05)
+                        DateOfBirth = new DateTime(1960, 05, 05),
+                        DeathDate = null
                     }
 
                 );
@@ -88,54 +93,54 @@ namespace Library_DueDate_Tracker_With_Database.Models
                 .HasForeignKey(thisEntity => thisEntity.AuthorID)
                 .OnDelete(DeleteBehavior.Restrict)
                 .HasConstraintName(keyName);
-                
+
                 entity.HasData(
                     new Book()
                     {
                         ID = 1,
-                        AuthorID = 1,
+                        AuthorID = -1,
                         Title = "The Choice",
                         PublicationDate = new DateTime(2015, 01, 01)
                     },
                     new Book()
                     {
                         ID = 2,
-                        AuthorID = 2,
+                        AuthorID = -2,
                         Title = "Cloud Atlas",
                         PublicationDate = new DateTime(2015, 02, 02)
                     },
                     new Book()
                     {
                         ID = 3,
-                        AuthorID = 3,
+                        AuthorID = -3,
                         Title = "Good Economics for Hard Times",
                         PublicationDate = new DateTime(2015, 03, 03)
                     },
                     new Book()
                     {
                         ID = 4,
-                        AuthorID = 4,
+                        AuthorID = -4,
                         Title = "The Great Influenza",
                         PublicationDate = new DateTime(2015, 04, 04)
-                    },                    
+                    },
                     new Book()
                     {
                         ID = 5,
-                        AuthorID = 5,
+                        AuthorID = -5,
                         Title = "The Ride of a Lifetime",
                         PublicationDate = new DateTime(2015, 05, 05)
                     },
                     new Book()
                     {
                         ID = 6,
-                        AuthorID = 3,
+                        AuthorID = -3,
                         Title = "Good Economics for Hard Times part 2",
                         PublicationDate = new DateTime(2016, 03, 03)
                     },
                     new Book()
                     {
                         ID = 7,
-                        AuthorID = 3,
+                        AuthorID = -3,
                         Title = "Good Economics for Hard Times part 3",
                         PublicationDate = new DateTime(2017, 03, 03)
                     }
@@ -158,62 +163,63 @@ namespace Library_DueDate_Tracker_With_Database.Models
                 entity.HasData(
                     new Borrow()
                     {
-                        ID = 1,
+                        ID = -11,
                         BookID = 1,
                         ChechedOutDate = new DateTime(2015, 12, 25),
                         DueDate = new DateTime(2016, 01, 08),
-                        ReturnedDate = new DateTime(2016, 01, 01)
+                        ReturnedDate = null
                     },
                     new Borrow()
                     {
-                        ID = 2,
+                        ID = -22,
                         BookID = 2,
                         ChechedOutDate = new DateTime(2015, 12, 25),
                         DueDate = new DateTime(2016, 01, 08),
-                        ReturnedDate = new DateTime(2016, 01, 01)
+                        ReturnedDate = null
                     },
                     new Borrow()
                     {
-                        ID = 3,
+                        ID = -33,
                         BookID = 3,
                         ChechedOutDate = new DateTime(2015, 12, 25),
                         DueDate = new DateTime(2016, 01, 08),
-                        ReturnedDate = new DateTime(2016, 01, 01)
+                        ReturnedDate = null
                     },
                     new Borrow()
                     {
-                        ID = 4,
+                        ID = -44,
                         BookID = 4,
                         ChechedOutDate = new DateTime(2015, 12, 25),
                         DueDate = new DateTime(2016, 01, 08),
-                        ReturnedDate = new DateTime(2016, 01, 01)
+                        ReturnedDate = null
                     },
                     new Borrow()
                     {
-                        ID = 5,
+                        ID = -55,
                         BookID = 5,
                         ChechedOutDate = new DateTime(2015, 12, 25),
                         DueDate = new DateTime(2016, 01, 08),
-                        ReturnedDate = new DateTime(2016, 01, 01)
+                        ReturnedDate = null
                     },
                     new Borrow()
                     {
-                        ID = 6,
+                        ID = -66,
                         BookID = 6,
                         ChechedOutDate = new DateTime(2015, 12, 25),
                         DueDate = new DateTime(2016, 01, 08),
-                        ReturnedDate = new DateTime(2016, 01, 10)
+                        ReturnedDate = null
                     },
                     new Borrow()
                     {
-                        ID = 7,
+                        ID = -77,
                         BookID = 7,
                         ChechedOutDate = new DateTime(2015, 12, 25),
                         DueDate = new DateTime(2016, 01, 08),
-                        ReturnedDate = new DateTime()
+                        ReturnedDate = null
                     });
             });
         }
 
     }
 }
+
