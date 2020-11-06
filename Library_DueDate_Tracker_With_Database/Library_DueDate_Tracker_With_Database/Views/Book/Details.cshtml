@@ -12,12 +12,22 @@
     <p>Author: @(ViewBag.Details.Author.Name)</p>
     <p>Publication Date: @(ViewBag.Details.PublicationDate.ToLongDateString())</p>
 
-    
+    @if (ViewBag.Details.Borrows != null)
+    {
+        <h2>Library Details</h2>
+        @foreach (Borrow borrow in ViewBag.Details.Borrows)
+        {
+            <p>Checkout Date: @(borrow.ChechedOutDate.ToShortDateString())</p>
+            <p>DueDate: @(borrow.DueDate.ToShortDateString())</p>
+            <p>Returned Date: @(borrow.ReturnedDate == null ? "Not Returned" : ((DateTime)borrow.ReturnedDate).ToShortDateString())</p>
+        }
 
+    }
+
+    
     <a class="btn btn-success" href="/Book/Return?id=@(ViewBag.Details.ID)">Return Book</a>
     <a class="btn btn-primary" href="/Book/Extend?id=@(ViewBag.Details.ID)">Extend Due Date</a>
     <a class="btn btn-danger" href="/Book/Delete?id=@(ViewBag.Details.ID)">Delete Book</a>
-
     <a class="btn btn-success" href="/Book/BorrowBook?id=@(ViewBag.Details.ID)">Borrow Book</a>
 
 }
