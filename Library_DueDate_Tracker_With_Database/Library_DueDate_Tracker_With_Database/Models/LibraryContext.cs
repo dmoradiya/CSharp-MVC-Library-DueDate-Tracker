@@ -165,57 +165,64 @@ namespace Library_DueDate_Tracker_With_Database.Models
                     {
                         ID = -11,
                         BookID = 1,
-                        ChechedOutDate = new DateTime(2015, 12, 25),
+                        CheckedOutDate = new DateTime(2015, 12, 25),
                         DueDate = new DateTime(2016, 01, 08),
-                        ReturnedDate = null
+                        ReturnedDate = null,
+                        ExtensionCount = 0
                     },
                     new Borrow()
                     {
                         ID = -22,
                         BookID = 2,
-                        ChechedOutDate = new DateTime(2015, 12, 25),
+                        CheckedOutDate = new DateTime(2015, 12, 25),
                         DueDate = new DateTime(2016, 01, 08),
-                        ReturnedDate = null
+                        ReturnedDate = null,
+                        ExtensionCount = 0
                     },
                     new Borrow()
                     {
                         ID = -33,
                         BookID = 3,
-                        ChechedOutDate = new DateTime(2015, 12, 25),
+                        CheckedOutDate = new DateTime(2015, 12, 25),
                         DueDate = new DateTime(2016, 01, 08),
-                        ReturnedDate = null
+                        ReturnedDate = null,
+                        ExtensionCount = 0
                     },
                     new Borrow()
                     {
                         ID = -44,
                         BookID = 4,
-                        ChechedOutDate = new DateTime(2015, 12, 25),
+                        CheckedOutDate = new DateTime(2015, 12, 25),
                         DueDate = new DateTime(2016, 01, 08),
-                        ReturnedDate = null
+                        ReturnedDate = null,
+                        ExtensionCount = 0
                     },
                     new Borrow()
                     {
                         ID = -55,
                         BookID = 5,
-                        ChechedOutDate = new DateTime(2015, 12, 25),
+                        CheckedOutDate = new DateTime(2015, 12, 25),
                         DueDate = new DateTime(2016, 01, 08),
-                        ReturnedDate = null
+                        ReturnedDate = null,
+                        ExtensionCount = 0
                     },
                     new Borrow()
                     {
                         ID = -66,
                         BookID = 6,
-                        ChechedOutDate = new DateTime(2015, 12, 25),
+                        CheckedOutDate = new DateTime(2015, 12, 25),
                         DueDate = new DateTime(2016, 01, 08),
-                        ReturnedDate = null
+                        ReturnedDate = null,
+                        ExtensionCount = 0
                     },
                     new Borrow()
                     {
                         ID = -77,
                         BookID = 7,
-                        ChechedOutDate = new DateTime(2015, 12, 25),
+                        CheckedOutDate = new DateTime(2015, 12, 25),
                         DueDate = new DateTime(2016, 01, 08),
-                        ReturnedDate = null
+                        ReturnedDate = null,
+                        ExtensionCount = 0
                     });
             });
         }

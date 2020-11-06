@@ -49,7 +49,7 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
                 context.Borrows.Add(new Borrow()
                 {
                     BookID = int.Parse(id),
-                    ChechedOutDate = DateTime.Today,
+                    CheckedOutDate = DateTime.Today,
                     DueDate = DateTime.Today.AddDays(14),
                     ReturnedDate = null,
 

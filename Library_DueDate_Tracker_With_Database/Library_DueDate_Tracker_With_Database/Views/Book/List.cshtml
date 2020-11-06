@@ -24,7 +24,7 @@
                 <td>@(book.Author.Name)</td>
                 <td>@(book.PublicationDate.ToShortDateString())</td>
               
-                <td>@(book.Borrows.LastOrDefault().ChechedOutDate.ToShortDateString())</td>
+                <td>@(book.Borrows.LastOrDefault().CheckedOutDate.ToShortDateString())</td>
                 <td>@(book.Borrows.LastOrDefault().DueDate.ToShortDateString())</td>
 
                 <td>@((book.Borrows.LastOrDefault().ReturnedDate == null ? "Not Returned" : ((DateTime)book.Borrows.LastOrDefault().ReturnedDate).ToShortDateString()))</td>

@@ -19,13 +19,16 @@ namespace Library_DueDate_Tracker_With_Database.Models
         public int BookID { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime ChechedOutDate { get; set; }
+        public DateTime CheckedOutDate { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime DueDate { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? ReturnedDate { get; set; }
+
+        [Column(TypeName = "int(10)")]
+        public int ExtensionCount { get; set; }
 
         [ForeignKey(nameof(BookID))]
         [InverseProperty(nameof(Models.Book.Borrows))]
