@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Library_DueDate_Tracker_With_Database.Models;
@@ -21,9 +22,27 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
             ViewBag.Books = GetBooks();
             return View();
         }
-        public IActionResult Create()
+        public IActionResult Create(string author, string title, string publicationDate)
         {
-            ViewBag.Author = AuthorsController.GetAuthors();
+            ViewBag.Authors = AuthorsController.GetAuthors();
+
+            if (author != null && title != null && publicationDate != null)
+            {
+                try
+                {
+                    CreateBook(author, title, publicationDate);
+
+                    ViewBag.SuccessfulCreation = true;
+                    ViewBag.Status = $"Successfully added book  {title}";
+                }
+                catch (Exception e)
+                {
+
+                    ViewBag.SuccessfulCreation = false;
+                    ViewBag.Status = $"An error occured. {e.Message}";
+                }
+            }
+
             return View();
         }
         public IActionResult Details(string id)
@@ -52,7 +71,18 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
         }
         public IActionResult BorrowBook(string id)
         {
-            BorrowController.CreateBorrow(id);
+            try
+            {
+                BorrowController.CreateBorrow(id);
+                ViewBag.Status = true;
+                ViewBag.Message = "Successfully Borrowed Your Book";
+            }
+            catch (Exception)
+            {
+
+                ViewBag.Status = false;
+                ViewBag.Message = "Error";
+            }
 
             return RedirectToAction("Details", new Dictionary<string, string>() { { "id", id } });
         }
@@ -92,6 +122,21 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
                 context.SaveChanges();
             }
             
+        }
+
+        public void CreateBook(string author, string title, string publicationDate)
+        {
+            using (LibraryContext context = new LibraryContext())
+            {
+                //int authorID = context.Authors.Where(x => x.Name == author).SingleOrDefault().ID;
+                context.Books.Add(new Book()
+                {
+                    Title = title,
+                    AuthorID = int.Parse(author),
+                    PublicationDate = DateTime.Parse(publicationDate)
+                });
+                context.SaveChanges();
+            }
         }
 
     }

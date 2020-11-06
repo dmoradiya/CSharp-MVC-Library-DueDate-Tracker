@@ -7,11 +7,12 @@
 @if (ViewBag.Details != null)
 {
     <h1>Details - @(ViewBag.Details.ID)</h1>
+    <h2>Book Details</h2>
     <p>Title: @(ViewBag.Details.Title)</p>
     <p>Author: @(ViewBag.Details.Author.Name)</p>
     <p>Publication Date: @(ViewBag.Details.PublicationDate.ToLongDateString())</p>
 
-
+    
 
     <a class="btn btn-success" href="/Book/Return?id=@(ViewBag.Details.ID)">Return Book</a>
     <a class="btn btn-primary" href="/Book/Extend?id=@(ViewBag.Details.ID)">Extend Due Date</a>
@@ -24,6 +25,10 @@ else
 {
     <h1>Details</h1>
     <p>An error occured trying to populate book data. <a href="/Book/List">Click here to return to the book list</a>.</p>
+}
+@if (ViewBag.Status != null)
+{
+    <p class="alert @((ViewBag.Status ? "alert-success" : "alert-danger"))">@(ViewBag.Message)</p>
 }
 
 
