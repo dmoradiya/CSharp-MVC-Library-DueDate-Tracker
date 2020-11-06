@@ -165,8 +165,8 @@ namespace Library_DueDate_Tracker_With_Database.Models
                     {
                         ID = -11,
                         BookID = 1,
-                        CheckedOutDate = new DateTime(2015, 12, 25),
-                        DueDate = new DateTime(2016, 01, 08),
+                        CheckedOutDate = new DateTime(2019, 12, 25),
+                        DueDate = new DateTime(2020, 01, 08),
                         ReturnedDate = null,
                         ExtensionCount = 0
                     },
@@ -174,8 +174,8 @@ namespace Library_DueDate_Tracker_With_Database.Models
                     {
                         ID = -22,
                         BookID = 2,
-                        CheckedOutDate = new DateTime(2015, 12, 25),
-                        DueDate = new DateTime(2016, 01, 08),
+                        CheckedOutDate = new DateTime(2019, 12, 25),
+                        DueDate = new DateTime(2020, 01, 08),
                         ReturnedDate = null,
                         ExtensionCount = 0
                     },
@@ -183,17 +183,17 @@ namespace Library_DueDate_Tracker_With_Database.Models
                     {
                         ID = -33,
                         BookID = 3,
-                        CheckedOutDate = new DateTime(2015, 12, 25),
-                        DueDate = new DateTime(2016, 01, 08),
-                        ReturnedDate = null,
+                        CheckedOutDate = new DateTime(2019, 12, 25),
+                        DueDate = new DateTime(2020, 01, 08),
+                        ReturnedDate = new DateTime(2020,01,05),
                         ExtensionCount = 0
                     },
                     new Borrow()
                     {
                         ID = -44,
                         BookID = 4,
-                        CheckedOutDate = new DateTime(2015, 12, 25),
-                        DueDate = new DateTime(2016, 01, 08),
+                        CheckedOutDate = new DateTime(2019, 12, 25),
+                        DueDate = new DateTime(2020, 01, 08),
                         ReturnedDate = null,
                         ExtensionCount = 0
                     },
@@ -201,8 +201,8 @@ namespace Library_DueDate_Tracker_With_Database.Models
                     {
                         ID = -55,
                         BookID = 5,
-                        CheckedOutDate = new DateTime(2015, 12, 25),
-                        DueDate = new DateTime(2016, 01, 08),
+                        CheckedOutDate = new DateTime(2019, 12, 25),
+                        DueDate = new DateTime(2020, 01, 08),
                         ReturnedDate = null,
                         ExtensionCount = 0
                     },
@@ -210,17 +210,17 @@ namespace Library_DueDate_Tracker_With_Database.Models
                     {
                         ID = -66,
                         BookID = 6,
-                        CheckedOutDate = new DateTime(2015, 12, 25),
-                        DueDate = new DateTime(2016, 01, 08),
-                        ReturnedDate = null,
+                        CheckedOutDate = new DateTime(2019, 12, 25),
+                        DueDate = new DateTime(2020, 01, 08),
+                        ReturnedDate = new DateTime(2020, 01, 10),
                         ExtensionCount = 0
                     },
                     new Borrow()
                     {
                         ID = -77,
                         BookID = 7,
-                        CheckedOutDate = new DateTime(2015, 12, 25),
-                        DueDate = new DateTime(2016, 01, 08),
+                        CheckedOutDate = new DateTime(2019, 12, 25),
+                        DueDate = new DateTime(2020, 01, 08),
                         ReturnedDate = null,
                         ExtensionCount = 0
                     });
