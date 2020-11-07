@@ -3,16 +3,25 @@
     ViewData["Title"] = "Create";
 }
 
-@if (ViewBag.SuccessfulCreation != null)
+@if (ViewBag.Message != null)
 {
-<p class="alert @((ViewBag.SuccessfulCreation ? "alert-success" : "alert-danger"))">@(ViewBag.Status)</p>}
-
+    <p class="alert-@(ViewBag.Error != null ? "danger" : "success")">@(ViewBag.Message)</p>
+    if (ViewBag.Error != null)
+    {
+        <ul>
+            @foreach (Exception e in ViewBag.Exception.ValidationExceptions)
+            {
+                <li class="alert-danger">@(e.Message)</li>
+            }
+        </ul>
+    }
+}
 <h1>Create Book</h1>
 
 <form action="/Book/Create" method="post">
     <div>
-        <label for="author">Author:</label>
-        <select id="author" name="author">
+        <label for="authorID">Author:</label>
+        <select id="authorID" name="authorID">
             @foreach (Author author in ViewBag.Authors)
             {
                 <option value="@(author.ID)">@(author.Name)</option>
