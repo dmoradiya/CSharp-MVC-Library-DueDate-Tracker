@@ -24,6 +24,7 @@
             <p>Checkout Date: @(borrow.CheckedOutDate.ToShortDateString())</p>
             <p>DueDate: @(borrow.DueDate.ToShortDateString())</p>
             <p>Returned Date: @(borrow.ReturnedDate == null ? "Not Returned" : ((DateTime)borrow.ReturnedDate).ToShortDateString())</p>
+            <p>Number of Extension(s): @(borrow.ExtensionCount)</p>
         }
 
     }

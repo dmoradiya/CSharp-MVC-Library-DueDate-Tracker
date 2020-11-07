@@ -26,6 +26,7 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
             {
                 found = context.Borrows.Where(x=>x.BookID == int.Parse(id)).SingleOrDefault();
                 found.DueDate = DateTime.Today.AddDays(7);
+                found.ExtensionCount++;
                 context.SaveChanges();
             }
             
