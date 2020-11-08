@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Library_DueDate_Tracker_With_Database.Models;
+using Library_DueDate_Tracker_With_Database.Models.Exceptions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 
 namespace Library_DueDate_Tracker_With_Database.Controllers
@@ -47,6 +49,7 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
         {
             using (LibraryContext context = new LibraryContext())
             {
+                             
                 context.Borrows.Add(new Borrow()
                 {
                     BookID = int.Parse(id),

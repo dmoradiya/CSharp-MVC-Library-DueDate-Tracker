@@ -46,7 +46,7 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
                     ViewBag.Message = "There exist problem(s) with your submission, see below.";
                     ViewBag.Exception = e;
                     ViewBag.Error = true;
-            }
+                 }
             }
                
             return View();
@@ -54,6 +54,8 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
         public IActionResult Details(string id)
         {
             ViewBag.Details = GetBookByID(id);
+            ViewBag.Message = TempData["Message"];
+            ViewBag.Status = TempData["Status"];
 
             return View();
         }
@@ -75,19 +77,20 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
         
         public IActionResult BorrowBook(string id)
         {
-            try
-            {
-                BorrowController.CreateBorrow(id);
-                ViewBag.Status = true;
-                ViewBag.Message = "Successfully Borrowed Your Book";
-            }
-            catch (Exception)
-            {
+           
+               try
+                {
+                    BorrowController.CreateBorrow(id);
+                    TempData["Message"] = "Successfully Borrowed Your Book";
+                    TempData["Status"] = true;
+                }
+                catch 
+                {
 
-                ViewBag.Status = false;
-                ViewBag.Message = "Error";
-            }
-
+                    TempData["Message"] = "There exist problem(s) with your submission";
+                    TempData["Status"] = false;
+                }
+            
             return RedirectToAction("Details", new Dictionary<string, string>() { { "id", id } });
         }
         // ################### Methods ########################
@@ -205,6 +208,13 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
                     if (!DateTime.TryParse(publicationDate, out parsedPublicationDate))
                     {
                         exception.ValidationExceptions.Add(new Exception("Publication Date not Valid"));
+                    }
+                    else
+                    {
+                        if (parsedPublicationDate > DateTime.Today)
+                        {
+                            exception.ValidationExceptions.Add(new Exception("Publication Date Can not be Future Date"));
+                        }
                     }
                    
                 }
