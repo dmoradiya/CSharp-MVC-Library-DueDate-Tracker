@@ -26,10 +26,12 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
             Borrow found;
             using (LibraryContext context = new LibraryContext())
             {
-                found = context.Borrows.Where(x=>x.BookID == int.Parse(id)).SingleOrDefault();
-                found.DueDate = DateTime.Today.AddDays(7);
-                found.ExtensionCount++;
-                context.SaveChanges();
+                    found = context.Borrows.Where(x => x.BookID == int.Parse(id)).SingleOrDefault();
+                    found.DueDate = DateTime.Today.AddDays(7);
+                    found.ExtensionCount++;
+
+                    context.SaveChanges();
+                
             }
             
         }

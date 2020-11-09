@@ -53,28 +53,53 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
         }
         public IActionResult Details(string id)
         {
-            ViewBag.Details = GetBookByID(id);
-            ViewBag.Message = TempData["Message"];
-            ViewBag.Status = TempData["Status"];
+                ViewBag.Details = GetBookByID(id);
 
-            return View();
+                ViewBag.Message = TempData["Message"];
+                ViewBag.Error = TempData["Error"];
+
+                return View();
         }
         public IActionResult Extend(string id)
         {
-            ExtendDueDateForBookByID(id);
+            try
+            {
+                ExtendDueDateForBookByID(id);
+                TempData["Message"] = "Successfully Extended DueDate";
+                TempData["Error"] = false;
+            }
+            catch 
+            {
+                TempData["Message"] = "There exist problem(s) with your submission";
+                TempData["Error"] = true;
+
+            }
+            
             return RedirectToAction("Details", new Dictionary<string, string>() { { "id", id } });
         }
         public IActionResult Return(string id)
         {
-            ReturnBookByID(id);
+            try
+            {
+                ReturnBookByID(id);
+                TempData["Message"] = "Successfully Returned Book";
+                TempData["Error"] = false;
+            }
+            catch
+            {
+                TempData["Message"] = "There exist problem(s) with your submission";
+                TempData["Error"] = true;
+
+            }
+            
             return RedirectToAction("Details", new Dictionary<string, string>() { { "id", id } });
         }
         public IActionResult Delete(string id)
         {
-            DeleteBookByID(id);
+            DeleteBookByID(id);               
             return RedirectToAction("List");
         }
-        
+
         public IActionResult BorrowBook(string id)
         {
            
@@ -82,13 +107,13 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
                 {
                     BorrowController.CreateBorrow(id);
                     TempData["Message"] = "Successfully Borrowed Your Book";
-                    TempData["Status"] = true;
+                    TempData["Error"] = false;
                 }
                 catch 
                 {
 
                     TempData["Message"] = "There exist problem(s) with your submission";
-                    TempData["Status"] = false;
+                    TempData["Error"] = true;
                 }
             
             return RedirectToAction("Details", new Dictionary<string, string>() { { "id", id } });
@@ -170,6 +195,7 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
                         {
                             exception.ValidationExceptions.Add(new Exception("Book does not Exist"));
                         }
+                       
 
                     }
                 }
@@ -235,11 +261,11 @@ namespace Library_DueDate_Tracker_With_Database.Controllers
             }
         }
         
-        public List<Book> GetOverdueBooks()
+        public static List<Book> GetOverdueBooks()
         {
             List<Book> results;
                 results = GetBooks()
-                            .Where(x => x.Borrows.LastOrDefault().DueDate > DateTime.Today)
+                            .Where(x => x.Borrows.LastOrDefault().DueDate < DateTime.Today)
                             .ToList();
             return results;
         }
